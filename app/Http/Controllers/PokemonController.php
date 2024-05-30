@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Pokemon;
 use Illuminate\Http\Request;
+// use Illuminate\Support\Facades\DB;
 
 class PokemonController extends Controller
 {
@@ -12,13 +13,15 @@ class PokemonController extends Controller
      */
     public function index()
     {
-        // :::: could collect all of them in a job if not set
+        // DB::table('pokemon')->truncate();
 
-        // $json = json_decode(file_get_contents('https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0'), true);
-        // $json = json_decode(file_get_contents("https://pokeapi.co/api/v2/pokemon/10/"), true);
-        // dd($json);
+        
 
-        return view('home');
+        $pokemons = Pokemon::query()
+            ->orderBy("name")
+            ->paginate(5);
+
+        return view('home', ['pokemons' => $pokemons]);
     }
 
     /**
@@ -42,7 +45,7 @@ class PokemonController extends Controller
      */
     public function show(Pokemon $pokemon)
     {
-        // I can see an image, name, species, height/weight and any abilities
+        // TODO: I can see an image, name, species, height/weight and any abilities
     }
 
     /**
