@@ -2,6 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('home');
-});
+use App\Http\Controllers\PokemonController;
+
+Route::get('/', [PokemonController::class,'index'])->name('pokemon.index');
