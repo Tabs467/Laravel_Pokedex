@@ -5,7 +5,18 @@
             <p class="font-mono text-center mt-8">Species: {{ $pokemon->species }}</p>
             <p class="font-mono text-center mt-8">Height: {{ $pokemon->height }}</p>
             <p class="font-mono text-center mt-8">Weight: {{ $pokemon->weight }}</p>
-            <p class="font-mono text-center mt-8">Abilities: {{ $pokemon->abilities }}</p>
+            <br>
+            <br>
+            <br>
+            <p class="font-mono text-center mt-8">Abilities:</p>
+            @foreach ($pokemon->abilities as $ability)
+                <br>
+                <p class="font-mono text-center mt-8">Name: {{ $ability['name'] }}</p>
+                <p class="font-mono text-center mt-8">Is hidden: {{ $ability['is_hidden'] }}</p>
+                <p class="font-mono text-center mt-8">Slot: {{ $ability['slot'] }}</p>
+                <hr>
+                <br>
+            @endforeach
         </div>
         <div class="mx-auto mb-10 flex">
             <img src="{{ asset('images/Poke_Ball.png') }}" alt="pokemon image" class="h-60 w-60">
