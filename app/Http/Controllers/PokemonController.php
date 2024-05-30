@@ -12,11 +12,31 @@ class PokemonController extends Controller
      */
     public function index()
     {
-        $pokemons = Pokemon::query()
+        /**
+         * Return empty string if input is not present in Query String
+         */
+        $possible_search = request()->query('search_term', '');
+
+        /**
+         * If on home page or no search string provided,
+         * return all pokemons
+         */
+        if ($possible_search == "") {
+            $pokemons = Pokemon::query()
             ->orderBy("name")
             ->paginate(5);
+        }
+        /**
+         * If search string provided, conduct search
+         */
+        else {
+            $pokemons = Pokemon::query()
+            ->where("name", "LIKE", "%". $possible_search ."%")
+            ->orderBy("name")
+            ->paginate(5);
+        }
 
-        return view('home', ['pokemons' => $pokemons]);
+        return view('home', ['pokemons' => $pokemons, 'last_search' => $possible_search]);
     }
 
     /**
