@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Pokemon;
 use Illuminate\Http\Request;
-// use Illuminate\Support\Facades\DB;
 
 class PokemonController extends Controller
 {
@@ -13,10 +12,6 @@ class PokemonController extends Controller
      */
     public function index()
     {
-        // DB::table('pokemon')->truncate();
-
-        
-
         $pokemons = Pokemon::query()
             ->orderBy("name")
             ->paginate(5);
@@ -45,7 +40,7 @@ class PokemonController extends Controller
      */
     public function show(Pokemon $pokemon)
     {
-        // TODO: I can see an image, name, species, height/weight and any abilities
+        return view('pokemon.show', ['pokemon' => $pokemon]);
     }
 
     /**

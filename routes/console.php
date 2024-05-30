@@ -59,3 +59,5 @@ Artisan::command('add:pokemon', function () {
         }
     }
 })->everyMinute();
+
+// TODO: Add a job that runs every day or week to check if any json information has changed - and if so update our pokemon database
