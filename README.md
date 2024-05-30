@@ -1,3 +1,14 @@
+# Notes from Andrew
+
+As well as the usual Laravel commands, in a separate terminal run:     while true; do php artisan schedule:run; sleep 60; done
+
+
+
+
+
+
+
+
 # ans/pokédex
 
 **This project will be based primarily on your ability to fulfill the task 
