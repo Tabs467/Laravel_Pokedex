@@ -46,10 +46,7 @@ Schedule::call(function () {
                     $pokemon->height = $pokemon_collection->get('height');
                     $pokemon->weight = $pokemon_collection->get('weight');
                     $pokemon->abilities = json_encode($pokemon_collection->get('abilities'));
-                    /**
-                     * TODO: Replace placeholder image
-                     */
-                    $pokemon->image_path = "images/Poke_Ball.png";
+                    $pokemon->image_path = $pokemon_collection->get('sprites')['front_default'];
 
                     /**
                      * Save formatted pokemon to the db

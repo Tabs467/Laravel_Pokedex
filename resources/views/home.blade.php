@@ -19,7 +19,7 @@
                     <form method="GET" action="{{ route('pokemon.show', $pokemon) }}">
                         <button type="submit">
                             <h3 class="font-mono font-bold text-center">{{ $pokemon->name }}</h3>
-                            <img src="{{ asset('images/Poke_Ball.png') }}" alt="Image of the pokemon {{ $pokemon->name }}" class="h-40 w-40">
+                            <img src="{{ $pokemon->image_path }}" alt="Image of the pokemon {{ $pokemon->name }}" class="h-40 w-40">
                         </button>
                     </form>
                 </div>

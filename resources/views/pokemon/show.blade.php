@@ -19,7 +19,7 @@
             @endforeach
         </div>
         <div class="mx-auto mb-10 flex">
-            <img src="{{ asset('images/Poke_Ball.png') }}" alt="Image of the pokemon {{ $pokemon->name }}" class="h-60 w-60">
+            <img src="{{ $pokemon->image_path }}" alt="Image of the pokemon {{ $pokemon->name }}" class="h-60 w-60">
         </div>
 
         <div class="mx-auto font-mono mb-10">
