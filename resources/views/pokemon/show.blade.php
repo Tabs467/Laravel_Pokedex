@@ -2,24 +2,27 @@
     <div class="flex flex-col">
         <div class="mx-auto py-20">
             <h1 class="font-extrabold font-mono text-7xl text-center">{{ $pokemon->name }}</h1>
-            <p class="font-mono text-center mt-8">Species: {{ $pokemon->species }}</p>
-            <p class="font-mono text-center mt-8">Height: {{ $pokemon->height }}</p>
-            <p class="font-mono text-center mt-8">Weight: {{ $pokemon->weight }}</p>
-            <br>
-            <br>
-            <br>
-            <p class="font-mono text-center mt-8">Abilities:</p>
-            @foreach ($pokemon->abilities as $ability)
-                <br>
-                <p class="font-mono text-center mt-8">Name: {{ $ability['name'] }}</p>
-                <p class="font-mono text-center mt-8">Is hidden: {{ $ability['is_hidden'] }}</p>
-                <p class="font-mono text-center mt-8">Slot: {{ $ability['slot'] }}</p>
-                <hr>
-                <br>
-            @endforeach
-        </div>
-        <div class="mx-auto mb-10 flex">
-            <img src="{{ $pokemon->image_path }}" alt="Image of the pokemon {{ $pokemon->name }}" class="h-60 w-60">
+
+            <div class="flex center-x-y">
+                <img src="{{ $pokemon->image_path }}" alt="Image of the pokemon {{ $pokemon->name }}" class="h-60 w-60">
+                <div class="flex flex-col center-x-y">
+                    <p class="font-mono">Species: {{ $pokemon->species }}</p>
+                    <p class="font-mono">Height: {{ $pokemon->height }}</p>
+                    <p class="font-mono">Weight: {{ $pokemon->weight }}</p>
+                </div>
+            </div>
+
+            <p class="font-mono text-center mt-8 font-bold">Abilities:</p>
+            <div class="flex justify-center mt-4 space-x-4">
+                @foreach ($pokemon->abilities as $ability)
+                    <div class="flex flex-col justify-center items-center w-40 h-32 border border-gray-300 rounded-lg p-4">
+                        <p class="font-mono text-center font-bold">{{ $ability['name'] }}</p>
+                        <p class="font-mono text-center">{{ $ability['is_hidden'] }}</p>
+                        <p class="font-mono text-center">Slot {{ $ability['slot'] }}</p>
+                    </div>
+                @endforeach
+            </div>
+
         </div>
 
         <div class="mx-auto font-mono mb-10">

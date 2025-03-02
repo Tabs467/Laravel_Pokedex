@@ -65,7 +65,7 @@ class PokemonController extends Controller
         $ability_index = 0;
         foreach ($decoded_abilities as $ability) {
             $formatted_abilities[$ability_index]['name'] = $ability->ability->name;
-            $formatted_abilities[$ability_index]['is_hidden'] = $ability->is_hidden ? 'Ability hidden' : 'Ability not hidden';
+            $formatted_abilities[$ability_index]['is_hidden'] = $ability->is_hidden ? 'Hidden' : 'Not hidden';
             $formatted_abilities[$ability_index]['slot'] = $ability->slot;
             $ability_index++;
         }
