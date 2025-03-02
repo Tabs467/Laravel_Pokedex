@@ -1,13 +1,14 @@
 <?php
 
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Schedule;
 use Illuminate\Support\Facades\DB;
 use App\Models\Pokemon;
 
 /**
  * Add the next set of 5 pokemon to the database
  */
-Artisan::command('add:pokemon', function () {
+Schedule::call(function () {
     /**
      * Retrieve total pokemon count
      */
