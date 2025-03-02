@@ -25,7 +25,6 @@ Schedule::call(function () {
          */
         $all_pokemon_json = json_decode(file_get_contents('https://pokeapi.co/api/v2/pokemon?limit=5&offset='.$offset), true);
 
-        // TODO: Add log of failure to retrieve this JSON
         if ($all_pokemon_json != null) {
             $all_pokemon_collection = collect($all_pokemon_json);
             
@@ -56,11 +55,16 @@ Schedule::call(function () {
                 /**
                  * Attempt to process more pokemon if the current one is not valid JSON
                  */
-                // TODO: Add log of failure to add pokemon - so none can be missed
                 else {
+                    Log::error('Individual pokemon JSON was null, skipping this pokemon.');
+                    Log::error($pokemon_link);
                     continue;
                 }
             }
+        }
+        else {
+            Log::error('Grouped pokemon JSON was null.');
+            Log::error($all_pokemon_json);
         }
     }
 })->everyMinute();
