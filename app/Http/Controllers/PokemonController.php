@@ -60,18 +60,6 @@ class PokemonController extends Controller
      */
     public function show(Pokemon $pokemon)
     {
-        $decoded_abilities = json_decode($pokemon->abilities);
-        $formatted_abilities = array();
-        $ability_index = 0;
-        foreach ($decoded_abilities as $ability) {
-            $formatted_abilities[$ability_index]['name'] = $ability->ability->name;
-            $formatted_abilities[$ability_index]['is_hidden'] = $ability->is_hidden ? 'Hidden' : 'Not hidden';
-            $formatted_abilities[$ability_index]['slot'] = $ability->slot;
-            $ability_index++;
-        }
-
-        $pokemon->abilities = $formatted_abilities;
-
         return view('pokemon.show', ['pokemon' => $pokemon]);
     }
 
