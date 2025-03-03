@@ -15,7 +15,7 @@ class PokemonController extends Controller
         /**
          * Return empty string if input is not present in Query String
          */
-        $possible_search = request()->query('search_term', '');
+        $possible_search = request()->query('searchTerm', '');
 
         /**
          * If on home page or no search string provided,
@@ -60,7 +60,10 @@ class PokemonController extends Controller
      */
     public function show(Pokemon $pokemon)
     {
-        return view('pokemon.show', ['pokemon' => $pokemon, 'searchPage' => request()->query()['searchPage']]);
+        $possible_search = request()->query('searchTerm', '');
+        $search_page = request()->query()['searchPage'];
+        
+        return view('pokemon.show', ['pokemon' => $pokemon, 'searchTerm' => $possible_search, 'searchPage' => $search_page]);
     }
 
     /**

@@ -5,7 +5,7 @@
             <h1 class="font-extrabold font-mono text-7xl py-10 text-center">Pokédex</h1>
             <div class="w-full max-w-md px-4">
                 <form method="GET" action="{{ route('pokemon.search') }}" class="flex items-center w-full">
-                    <input class="w-full rounded-md px-3 py-2" id="search_term" name="search_term" placeholder="Search for a Pokémon..." value="{{ $last_search }}">
+                    <input class="w-full rounded-md px-3 py-2" id="searchTerm" name="searchTerm" placeholder="Search for a Pokémon..." value="{{ $last_search }}">
                     <button type="submit" class="ml-3 px-4 py-2 bg-gray-300 rounded-md">
                         <h3 class="font-mono font-bold text-center">Search</h3>
                     </button>
@@ -18,6 +18,7 @@
                 <div class="bg-gray-200 p-4 rounded-lg shadow-md flex flex-col items-center w-48">
                     <form method="GET" action="{{ route('pokemon.show', $pokemon) }}" class="w-full">
                         <input type="hidden" name="searchPage" value="{{ request('page', 1) }}">
+                        <input type="hidden" name="searchTerm" value="{{ $last_search }}">
                         <button type="submit" class="flex flex-col items-center w-full">
                             <h3 class="font-mono font-bold text-center">{{ $pokemon->name }}</h3>
                             <img src="{{ $pokemon->image_path }}" alt="Image of {{ $pokemon->name }}" class="h-40 w-40">
@@ -30,12 +31,12 @@
         <div class="flex flex-col items-center gap-2">
             <div class="flex justify-center gap-4">
                 @if (!$pokemons->onFirstPage())
-                    <a href="{{ $pokemons->previousPageUrl() }}" class="w-24 py-2 text-center bg-gray-300 rounded-md">
+                    <a href="{{ $pokemons->previousPageUrl() }}&searchTerm={{ $last_search }}" class="w-24 py-2 text-center bg-gray-300 rounded-md">
                         Previous
                     </a>
                 @endif
                 @if (!$pokemons->onLastPage())
-                    <a href="{{ $pokemons->nextPageUrl() }}" class="w-24 py-2 text-center bg-gray-300 rounded-md">
+                    <a href="{{ $pokemons->nextPageUrl() }}&searchTerm={{ $last_search }}" class="w-24 py-2 text-center bg-gray-300 rounded-md">
                         Next
                     </a>
                 @endif
