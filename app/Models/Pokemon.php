@@ -27,7 +27,7 @@ class Pokemon extends Model
      * 
      * Abilities is stored as a longtext in MariaDB rather than JSON type
      */
-    protected function abilities(): Attribute { 
+    protected function abilities(): Attribute {
         return Attribute::make(
             get: function ($value) {
 
