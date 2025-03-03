@@ -17,6 +17,7 @@
             @foreach($pokemons as $pokemon)
                 <div class="bg-gray-200 p-4 rounded-lg shadow-md flex flex-col items-center w-48">
                     <form method="GET" action="{{ route('pokemon.show', $pokemon) }}" class="w-full">
+                        <input type="hidden" name="searchPage" value="{{ request('page', 1) }}">
                         <button type="submit" class="flex flex-col items-center w-full">
                             <h3 class="font-mono font-bold text-center">{{ $pokemon->name }}</h3>
                             <img src="{{ $pokemon->image_path }}" alt="Image of {{ $pokemon->name }}" class="h-40 w-40">

@@ -27,6 +27,7 @@
 
         <div class="mx-auto font-mono mb-10">
             <form method="GET" action="{{ route('pokemon.index') }}">
+                <input type="hidden" name="page" value="{{ $searchPage }}">
                 <button type="submit">
                     <h3 class="font-mono font-bold text-center">Return</h3>
                 </button>
